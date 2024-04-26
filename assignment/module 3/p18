@@ -1,0 +1,26 @@
+Q: What is tuple? Difference between list and tuple.
+
+Q : What is tuple?
+=> Tuple is a collection which is ordered and unchangeable.
+=> Tuple is allows duplicate members.
+=> Tuples are used to store multiple items in a single variable.
+
+Q : Difference between list and tuple.
+
+=> List  : List is mutable.
+=> Tuple : Tuple is immutable.
+
+=> List  : List iteration is slower and is time consuming.
+=> Tuple : Tuple iteration is faster.
+
+=> List  : List Provides many in-built methods.
+=> Tuple : Tuples have less in-built methods.
+
+=> List  : List is useful for insertion and deletion operations.
+=> Tuple : Tuple is useful for readonly operations like accessing elements.
+
+=> List  : used square brackets[]
+=> Tuple : use round paranthesis()
+
+=> List  : example : list1 = [1,2,'abc','xyz']
+=> Tuple : example : tuple1 = (1,2,'abc','xyz')

@@ -1,0 +1,5 @@
+How memory is managed in Python?
+
+Memory management in Python is primarily handled by the Python memory manager, 
+    which is responsible for allocating and deallocating memory for objects in the Python program.
+    

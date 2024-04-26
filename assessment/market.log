@@ -1,0 +1,4 @@
+2024-04-22 16:09:51,976 - INFO - Role selected: 1
+2024-04-22 16:09:59,548 - INFO - Fruit added: appel, Quantity: 2, Price: 30
+2024-04-22 16:10:02,114 - INFO - {'appel': {'qty': 2, 'price': 30}}
+2024-04-22 16:10:08,594 - WARNING - Attempted to update non-existing fruit: apple

@@ -1,0 +1,10 @@
+What are negative indexes and why are they used?
+    
+    Negative indexing allows you to access elements of a sequence from the end.
+
+For Example, in a list with 5 element, the last element can be accessed using the index -1, 
+the second to last element using the index -2, and so on.
+
+Example:
+    mylist = ['a','b','c','d']
+    print(mylist[-1])
