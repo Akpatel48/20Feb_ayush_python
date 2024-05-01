@@ -7,4 +7,4 @@ for i in range(no):
     data=input("enter tuple value:")
     tupl+=(data,)
 
-print(len(tupl))
+print(len(tupl))    #display truple lengthn

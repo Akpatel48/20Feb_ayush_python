@@ -10,4 +10,4 @@ for i in range(no):
 
 for i in tupl:
     a+=i
-print(a)
+print(a)    #display truple in string
