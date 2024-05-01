@@ -13,4 +13,3 @@ re=fil.readlines()
 
 for i in re:
     
-    print('v'+i)
