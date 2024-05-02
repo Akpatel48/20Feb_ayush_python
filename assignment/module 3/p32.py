@@ -3,12 +3,12 @@ value.'''
 
 dict = {1 : 'mouse',2 : 'keyboard',3 : 'monitor',4 : 'cpu'}
 
-ind = len(dict)
+ind = len(dict) #get dict len
 print(f"Dictionary : {dict}\n")
 print("Enter 'a' for ascending and 'd' for descending:")
-choose = input("Enter Choice : ")
+choose = input("Enter Choice : ")   #get choice ascending or deseending oder
 
-if (choose == 'a' or choose == 'A'):
+if (choose == 'a' or choose == 'A'):       #ascending oder
     
     print("Dictionary in ascending Order: ")
     for i in range(1, len(dict)+1):

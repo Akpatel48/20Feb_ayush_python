@@ -1,8 +1,8 @@
 '''Write a Python script to concatenate following dictionaries to create a 
 new one'''
 
-no=int(input("enter number of paire enter:"))
-dis1={}
+no=int(input("enter number of paire enter:"))   #get number of pair in dict
+dis1={} 
 dis2={}
 
 for i in range(1,no+1):
