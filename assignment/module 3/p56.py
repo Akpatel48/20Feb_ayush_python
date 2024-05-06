@@ -2,6 +2,6 @@
 
 import random
 
-ran=random.seed(5)
+ran=random.seed(1)  #starting value is fix not chenge number
 
 print(random.random())

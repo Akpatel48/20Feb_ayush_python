@@ -1,8 +1,8 @@
 #How can you get a random number in python? 
 import random
 a=1
-b=100000000000000
+b=10000
 
-ran=random.randint(a,b)
+ran=random.randint(a,b) #gnret randome number
 
-print(ran)
+print(ran)  #display randome number

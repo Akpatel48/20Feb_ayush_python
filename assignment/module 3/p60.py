@@ -1,8 +1,8 @@
 #Write a Python program to calculate the area of a trapezoid
 
-top = int(input("enter value of top:"))
-base = int(input("enter value of base:"))
-height = int(input("enter value height:"))
+top = int(input("enter value of top:"))     #get top value
+base = int(input("enter value of base:"))   #get base value
+height = int(input("enter value height:"))  #get height value
 
-area = (top+base)/height * 3
-print(f"area of trapezoid is:{area}")
+area = (top+base)/height * 3    #calculate trapzoid area
+print(f"area of trapezoid is:{area}")   #display trapezoid area

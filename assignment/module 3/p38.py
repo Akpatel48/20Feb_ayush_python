@@ -9,7 +9,7 @@ for i in range(no):
     dic[key]=dic
 
 
-if len(dic.keys())<2:
+if len(dic.keys())<2:   #check multiple keys available or not
     print("NO")
 else:
     print("YES")

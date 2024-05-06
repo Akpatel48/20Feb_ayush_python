@@ -10,7 +10,7 @@ def per():
         if(no%i == 0):
             sum += i
             
-    if (sum == no):
+    if (sum == no):     #check  number is perfect or not
         print(f"{no} is Perfect number")
     else:
         print(f"{no} is not perfect number")
