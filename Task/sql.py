@@ -6,14 +6,12 @@ try:
 except Exception as e:
     print("Error:", e)
 
-
-creat = '''CREATE TABLE stu (
+table=input("table name")
+creat =f'''CREATE TABLE stu (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             name VARCHAR(20),
                             city VARCHAR(20)
                         );'''
-
-
 try:
     db.execute(creat)
     print("Table created successfully")
@@ -30,4 +28,7 @@ try:
     print("Table created successfully")
 except Exception as e:
     print("Error:", e)
-
+a='select * from stu'
+ab=db.execute(a)
+data=ab.fetchall()
+print(data)

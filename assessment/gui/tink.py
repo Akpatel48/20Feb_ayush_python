@@ -2,10 +2,7 @@ import tkinter
 from tkinter import ttk, messagebox
 
 class RegistrationForm:
-    def page1(self):
-        master=tkinter.Tk()
-        master.title("Registration Form")
-        master.geometry("300x400")
+    def page1(self,master):
         tkinter.Label(master, text="Please enter details below", background='yellow', width=100).pack()
 
         tkinter.Label(master, text='Name*').place(x=1, y=30)
@@ -32,7 +29,7 @@ class RegistrationForm:
 
         tkinter.Label(master, text='State*').place(x=1, y=230)
         state=['Gujarat','Goa','Chhattisgarh']
-        self.state_combobox = ttk.Combobox(master, values=city)
+        self.state_combobox = ttk.Combobox(master, values=state)
         self.state_combobox.place(x=60, y=230)
 
         ttk.Button(master, text='Register', command=self.register).place(x=90, y=280)
@@ -49,8 +46,24 @@ class RegistrationForm:
 
 def main():
     root = tkinter.Tk()
-    app = RegistrationForm(root).page1
+    root.geometry('300x400')
+    registration_form = RegistrationForm()  # Create an instance of RegistrationForm
+    registration_form.page1(root)           # Call the page1 method on the instance
     root.mainloop()
 
 if __name__ == "__main__":
     main()
+    
+import sqlite3
+
+try:
+    db=sqlite3.connect('form')
+    print('connect')
+except Exception as er:
+    print(er)
+try:
+    table='create table login(id integer primary key autoincrement,usernaem varchar(20),password varchar(16))'
+    db.execute(table)
+    print("table created")
+except Exception as er:
+    print(er)
