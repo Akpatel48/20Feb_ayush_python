@@ -11,6 +11,6 @@ for i in range(no):
     data=input("enter secand list value:")
     list2.append(data)
 
-lis=zip(list1,list2)
+lis=zip(list1,list2)    #zip list
 
 print(list(lis))

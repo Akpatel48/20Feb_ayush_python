@@ -2,9 +2,9 @@
 
 fil=open('text','r')
 
-re=fil.readlines()
+re=fil.readlines()  
 
-l1=re[0]
-l2=re[1]
+l1=re[0]    #file data store in variable
+l2=re[1]    
 print(l1)
 print(l2)

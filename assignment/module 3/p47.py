@@ -11,9 +11,9 @@ count = 1
 for i in string:
     
     key = i
-    if key not in dic:
-        dic[key] = count
+    if key not in dic:  #chek same chr in string
+        dic[key] = count    
     else:
         dic[key] +=count
         
-print(dic)
+print(dic)  #display number of same char

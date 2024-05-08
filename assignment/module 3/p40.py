@@ -14,9 +14,9 @@ for i in range(no):
     list2.append(data)
 
 for i in range(no):
-    dic[i]=list2[i]
+    dic[list1[i]]=list2[i]  #  list to dic
 
 print(f"list 1:{list1}")
 print(f"list 2:{list2}")
 
-print(f"after map dictionary:{dic}")
+print(f"after map dictionary:{dic}")    

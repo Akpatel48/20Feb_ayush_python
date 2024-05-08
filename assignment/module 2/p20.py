@@ -1,4 +1,4 @@
-'''Write a Python function that takes a list of words and returns the length
+'''Write a Python function that takes a list of w and returns the length
 of the longest one.'''
 no=int(input("enter number word:"))
 word=[]

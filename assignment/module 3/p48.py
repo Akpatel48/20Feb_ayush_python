@@ -10,6 +10,6 @@ def factorial(no):
     elif no>= 0:        
         for i in range(1,no+1):
             fact *= i 
-        print(f"Factorial of {no} is : {fact}")
+        print(f"Factorial of {no} is : {fact}")     #factorial number
         
 factorial(no)

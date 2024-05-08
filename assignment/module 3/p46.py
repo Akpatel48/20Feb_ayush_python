@@ -10,7 +10,7 @@ temp = {}
 for i in list1:
     item = i['item']
     amount = i['amount']
-    if item not in temp:    
+    if item not in temp:    #chek sem item to sum amount
         temp[item] = amount
     else:
         temp[item] += amount

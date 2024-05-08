@@ -1,57 +1,56 @@
 import tkinter
-from tkinter import ttk,messagebox
+from tkinter import ttk, messagebox
 
-tk=tkinter.Tk()
-tk.title("HelloApp")
-tk.geometry("400x400")
-tk.config(bg='lightblue')
+class RegistrationForm:
+    def page1(self):
+        master=tkinter.Tk()
+        master.title("Registration Form")
+        master.geometry("300x400")
+        tkinter.Label(master, text="Please enter details below", background='yellow', width=100).pack()
 
+        tkinter.Label(master, text='Name*').place(x=1, y=30)
+        self.name_entry = tkinter.Entry(master)
+        self.name_entry.place(x=60, y=30)
 
-lbl_fnm=tkinter.Label(text="Firstname:",bg="lightblue",fg="black",font='Courier 15 bold')
-#lbl_fnm.place(x=0,y=40)
-lbl_fnm.grid(row=0,column=0,sticky='W')
+        tkinter.Label(master, text='Contact*').place(x=1, y=70)
+        self.contact_entry = tkinter.Entry(master)
+        self.contact_entry.place(x=60, y=70)
 
-lbl_lnm=tkinter.Label(text="Lastname:",bg="lightblue",fg="black",font='Courier 15 bold')
-lbl_lnm.grid(row=1,column=0,sticky='W')
+        tkinter.Label(master, text='Email*').place(x=1, y=110)
+        self.email_entry = tkinter.Entry(master)
+        self.email_entry.place(x=60, y=110)
 
-txt_fnm=tkinter.Entry()
-txt_fnm.grid(row=0,column=1,sticky='W')
+        tkinter.Label(master, text='Gender').place(x=1, y=150)
+        self.gender_var = tkinter.IntVar()
+        tkinter.Radiobutton(master, text='Male', value=0, variable=self.gender_var).place(x=60, y=150)
+        tkinter.Radiobutton(master, text='Female', value=1, variable=self.gender_var).place(x=120, y=150)
 
-txt_lnm=tkinter.Entry()
-txt_lnm.grid(row=1,column=1,sticky='W')
+        tkinter.Label(master, text="City*").place(x=1, y=190)
+        city = ['Rajkot', 'Ahmedabad', 'Baroda', 'Surat', 'Jamnagar']
+        self.city_combobox = ttk.Combobox(master, values=city)
+        self.city_combobox.place(x=60, y=190)
 
-male=tkinter.Radiobutton(value=0,text="Male",bg="lightblue",fg="black",font='Courier 15 bold')
-male.grid(row=2,column=0,sticky='W')
+        tkinter.Label(master, text='State*').place(x=1, y=230)
+        state=['Gujarat','Goa','Chhattisgarh']
+        self.state_combobox = ttk.Combobox(master, values=city)
+        self.state_combobox.place(x=60, y=230)
 
-female=tkinter.Radiobutton(value=1,text="Female",bg="lightblue",fg="black",font='Courier 15 bold')
-female.grid(row=2,column=1,sticky='W')
+        ttk.Button(master, text='Register', command=self.register).place(x=90, y=280)
 
-ch1=tkinter.Checkbutton(text="Gujarati",bg="lightblue",fg="black",font='Courier 15 bold')
-ch1.grid(row=3,column=0,sticky='W')
+    def register(self):
+        name = self.name_entry.get()
+        contact = self.contact_entry.get()
+        email = self.email_entry.get()
+        gender = "Male" if self.gender_var.get() == 1 else "Female"
+        city = self.city_combobox.get()
+        state = self.state_combobox.get()
 
-ch2=tkinter.Checkbutton(text="Hindi",bg="lightblue",fg="black",font='Courier 15 bold')
-ch2.grid(row=4,column=0,sticky='W')
+        messagebox.showinfo("Welcome", f"Name: {name}\nContact: {contact}\nEmail: {email}\nGender: {gender}\nCity: {city}\nState: {state}")
 
-ch3=tkinter.Checkbutton(text="English",bg="lightblue",fg="black",font='Courier 15 bold')
-ch3.grid(row=5,column=0,sticky='W')
+def main():
+    root = tkinter.Tk()
+    app = RegistrationForm(root).page1
+    root.mainloop()
 
-city=['Rajkot','Ahmedabad','Baroda','Surat','Jamnagar']
-citylist=ttk.Combobox(values=city)
-citylist.grid(row=6,column=0)
-
-def btnclick():
-    print("Firstname:",txt_fnm.get())
-    print("Lastname:",txt_lnm.get())
-
-    #messagebox
-    #messagebox.showerror("Error","Something went wrong....")
-    #messagebox.showinfo("Success","Signup Successfully!")
-    #messagebox.showwarning("Warning!","Your disk is full!")
-
-    messagebox.showinfo("Welcome",f"Firstname:{txt_fnm.get()}\nLastname:{txt_lnm.get()}")
-
-
-btn=tkinter.Button(text="Submit",font='Courier 15 bold',command=btnclick)
-btn.place(x=150,y=250)
-
-tkinter.mainloop()
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,17 @@
-#Write a python program to find the longest words
-list1= ["apple", "banana", "pear", "kiwi", "grapefruit", "watermelon"]
-max=''
-for i in list1:
-    if len(max)<=len(i):
-        max=i
-print(max)
+#Write a python program to find the longest w.
+
+f = open("txt.text",'r')   #open file in read mode
+
+max_l = 0  #initialize variable
+l_word = ""   #initialize variable
+
+for line in f:
+    w = line.strip().split()    #split the line
+    for word in w:
+        if len(word) > max_l:
+            max_l = len(word)  #count length of word
+            l_word = word 
+        elif len(word) == max_l:   
+            l_word += " " + word
+
+print("Longest word : ",l_word)   #display longest word

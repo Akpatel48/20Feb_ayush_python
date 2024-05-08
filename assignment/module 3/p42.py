@@ -9,6 +9,6 @@ for i in range(no):
     list1.append(data)
 
 for i in range(no):
-    if list1[i] not in dic.values():
-        dic[i+1]=list1[i]
+    if list1[i] not in dic.values():   #check value unique or not
+        dic[i+1]=list1[i]   #add unique 
 print(dic)

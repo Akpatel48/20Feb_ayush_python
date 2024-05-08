@@ -20,8 +20,8 @@ for i in range(no):
 
 for i in d1:
     for j in d2:
-        if i==j:
-            d3[i]=int(d1[i])+int(d2[j])
+        if i==j:    #check key  same or not
+            d3[i]=int(d1[i])+int(d2[j])     #sem key sum values
         else:
             d3[i]=d1[i]
             d3[j]=d2[j]
