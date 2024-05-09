@@ -1,6 +1,20 @@
 import tkinter
 from tkinter import ttk, messagebox
+import pymysql
 
+try:
+    db=pymysql.connect(host='localhost',user='root',password='',database='test')
+    print('Database connected')
+except Exception as er:
+    print(er)
+cr=db.cursor()
+try:
+    table='create table login(name varchar(20),con integer(11),emil varchar(60),Gender varchar(20),city varchar(20),state varchar(20))'
+    cr.execute(table)
+    db.commit()
+    print("table created")
+except Exception as er:
+    print(er)
 class RegistrationForm:
     def page1(self,master):
         tkinter.Label(master, text="Please enter details below", background='yellow', width=100).pack()
@@ -38,11 +52,15 @@ class RegistrationForm:
         name = self.name_entry.get()
         contact = self.contact_entry.get()
         email = self.email_entry.get()
-        gender = "Male" if self.gender_var.get() == 1 else "Female"
+        gender = "Male" if self.gender_var.get() == 0 else "Female"
         city = self.city_combobox.get()
         state = self.state_combobox.get()
-
-        messagebox.showinfo("Welcome", f"Name: {name}\nContact: {contact}\nEmail: {email}\nGender: {gender}\nCity: {city}\nState: {state}")
+        try:
+            cr.execute("INSERT INTO login VALUES (%s, %s, %s, %s, %s, %s)", (name, contact, email, gender, city, state))
+            db.commit()
+            messagebox.showinfo("Welcome", f"Name: {name}\nContact: {contact}\nEmail: {email}\nGender: {gender}\nCity: {city}\nState: {state}")
+        except Exception as er:
+            print(er)
 
 def main():
     root = tkinter.Tk()
@@ -52,18 +70,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main()
-    
-import sqlite3
-
-try:
-    db=sqlite3.connect('form')
-    print('connect')
-except Exception as er:
-    print(er)
-try:
-    table='create table login(id integer primary key autoincrement,usernaem varchar(20),password varchar(16))'
-    db.execute(table)
-    print("table created")
-except Exception as er:
-    print(er)
+    main()  
