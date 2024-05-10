@@ -9,7 +9,7 @@ except Exception as er:
     print(er)
 cr=db.cursor()
 try:
-    table='create table login(name varchar(20),con integer(11),emil varchar(60),Gender varchar(20),city varchar(20),state varchar(20))'
+    table='create table login(name varchar(20),con integer(11),emil varchar(1),Gender varchar(20),city varchar(20),state varchar(20))'
     cr.execute(table)
     db.commit()
     print("table created")
@@ -21,30 +21,30 @@ class RegistrationForm:
 
         tkinter.Label(master, text='Name*').place(x=1, y=30)
         self.name_entry = tkinter.Entry(master)
-        self.name_entry.place(x=60, y=30)
+        self.name_entry.place(x=1, y=30)
 
         tkinter.Label(master, text='Contact*').place(x=1, y=70)
         self.contact_entry = tkinter.Entry(master)
-        self.contact_entry.place(x=60, y=70)
+        self.contact_entry.place(x=1, y=70)
 
         tkinter.Label(master, text='Email*').place(x=1, y=110)
         self.email_entry = tkinter.Entry(master)
-        self.email_entry.place(x=60, y=110)
+        self.email_entry.place(x=1, y=110)
 
         tkinter.Label(master, text='Gender').place(x=1, y=150)
         self.gender_var = tkinter.IntVar()
-        tkinter.Radiobutton(master, text='Male', value=0, variable=self.gender_var).place(x=60, y=150)
+        tkinter.Radiobutton(master, text='Male', value=0, variable=self.gender_var).place(x=1, y=150)
         tkinter.Radiobutton(master, text='Female', value=1, variable=self.gender_var).place(x=120, y=150)
 
         tkinter.Label(master, text="City*").place(x=1, y=190)
         city = ['Rajkot', 'Ahmedabad', 'Baroda', 'Surat', 'Jamnagar']
         self.city_combobox = ttk.Combobox(master, values=city)
-        self.city_combobox.place(x=60, y=190)
+        self.city_combobox.place(x=1, y=190)
 
         tkinter.Label(master, text='State*').place(x=1, y=230)
         state=['Gujarat','Goa','Chhattisgarh']
         self.state_combobox = ttk.Combobox(master, values=state)
-        self.state_combobox.place(x=60, y=230)
+        self.state_combobox.place(x=1, y=230)
 
         ttk.Button(master, text='Register', command=self.register).place(x=90, y=280)
 
