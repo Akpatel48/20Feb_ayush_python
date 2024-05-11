@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import ttk,messagebox
 import pymysql
-
+import buttone
 try:
     db=pymysql.connect(host='localhost',user='root',password='',database='market')
     print('Database connected')
@@ -17,16 +17,6 @@ try:
     print('table creatae')
 except Exception as er:
      print(er)
-
-try:
-    select = "SELECT id, password FROM register"
-    cr.execute(select)
-    rows = cr.fetchmany(2)
-    for row in rows:
-        id, password = row
-        print(id,password)
-except Exception as er:
-    print(er)
 
 
 class log:
@@ -57,11 +47,20 @@ class log:
 
             if row:
                 print("Login successful")
-            else:
-                print("Incorrect ID or password")
+                select="select role from register where id=%s"
+                cr.execute(select,(entered_id))
+                role=cr.fetchone()
+                print(role)
+                a=buttone.But()
+                a.buttn()
+                if role=='Product Manager':
+                    None
+                else:
+                    print("Incorrect ID or password")
         except Exception as er:
             print(er)
 class res:
+
     def Re(self):
         tk=tkinter.Tk()
         tk.geometry('300x400')
@@ -112,19 +111,18 @@ class res:
         ttk.Button(tk,text='home').place(x=150,y=320)
         tk.mainloop()
     def register(self):
-            id=self.id.get()
-            name =self.name.get()
-            contact =self.con.get()
-            email = self.email.get()
-            gender = "Male" if self.gender.get() == 0 else "Female"
-            city = self.city_combobox.get()
-            state = self.state_combobox.get()
-            password=self.password.get()
-            role = "Product Manager" if self.role.get() == 0 else "Customer"
-            print(id,name,contact,email,gender,city,state,password)
-            try:
-                cr.execute("INSERT INTO register VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s)", (id,name, contact, email, gender, city, state,password,role))
-                db.commit()
-            except Exception as er:
-                 print(er)
-
+        id=self.id.get()
+        name =self.name.get()
+        contact =self.con.get()
+        email = self.email.get()
+        gender = "Male" if self.gender.get() == 0 else "Female"
+        city = self.city_combobox.get()
+        state = self.state_combobox.get()
+        password=self.password.get()
+        role = "Product Manager" if self.role.get() == 0 else "Customer"
+        print(id,name,contact,email,gender,city,state,password,role)
+        '''try:
+            cr.execute("INSERT INTO register VALUES (%s,%s,%s, %s, %s, %s, %s, %s,%s)", (id,name, contact, email, gender, city, state,password,role))
+            db.commit()
+        except Exception as er:
+                print(er)'''
