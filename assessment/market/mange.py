@@ -52,11 +52,9 @@ class Manage:
             select_query = "SELECT name FROM item"
             cr.execute(select_query)
             data=cr.fetchall()
-            print(data)
         except Exception as er:
             print(er)
             messagebox.showerror("Error", "Failed to update")
-
         tkinter.Label(self.fm, text="Product").place(x=10, y=100)
         self.product = ttk.Combobox(self.fm, values=data)
         self.product.place(x=80, y=103)
@@ -78,5 +76,12 @@ class Manage:
         except Exception as er:
             print(er)
             messagebox.showerror("Error", "Failed to insert data")
-a=Manage()
-a.update()
+    def view():
+        cr.close()
+        try:
+            select='selcet * from item'
+            cr.execute(select)
+            data=cr.fetchall()
+            print(data)
+        except Exception as er:
+            print(er)

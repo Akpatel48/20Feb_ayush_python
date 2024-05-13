@@ -23,7 +23,7 @@ class log:
     def login(self):
         tk = tkinter.Tk()
         tk.geometry('300x400')
-        
+        tk.title("login")
         tkinter.Label(tk, text='id').place(x=1, y=150)
         self.lid = tkinter.Entry(tk)
         self.lid.place(x=120, y=153)
@@ -41,9 +41,14 @@ class log:
             entered_password = self.pas.get()
             
             # Retrieve data from the database
-            select_query = "SELECT id, password FROM register WHERE id = %s AND password = %s"
-            cr.execute(select_query, (entered_id, entered_password))
-            row =cr.fetchone()
+            try:
+                select_query = "SELECT id, password FROM register WHERE id = %s AND password = %s"
+                cr.execute(select_query, (entered_id, entered_password))
+                row =cr.fetchone()
+                if row==None:
+                    messagebox.showerror(message="plice ente valid id or password")
+            except:
+                print("enter valid id password")
 
             if row:
                 print("Login successful")
@@ -64,7 +69,7 @@ class res:
     def Re(self):
         tk=tkinter.Tk()
         tk.geometry('300x400')
-    
+        tk.title('Register Forme')
         tkinter.Label(tk,text='Please enter details below',background='yellow',width='100').pack()
 
         tkinter.Label(tk,text='id').place(x=10,y=50)

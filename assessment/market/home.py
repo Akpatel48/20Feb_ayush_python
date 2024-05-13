@@ -14,4 +14,4 @@ tk.title("Login")
 # Create buttons for login and registration
 lo=ttk.Button(tk,text='Login', command=login_action).place(x=120, y=150)
 ttk.Button(tk,text='Register',command=re).place(x=120, y=180)
-tk.mainloop()
+tk.mainloop()   
