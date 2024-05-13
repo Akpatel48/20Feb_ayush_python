@@ -1,5 +1,4 @@
 import pymysql
-
 try:
     db=pymysql.connect(host='localhost',user='root',password='',database='task')
     print("connect")
@@ -27,7 +26,7 @@ class manger:
                 db.commit()
                 print("Product inserted successfully!")
             except Exception as er:
-                print("Error inserting product:", e)
+                print("Error inserting product:", er)
         except ValueError:
             print("Invalid input. Please enter valid integer values for ID, price, and quantity.")
         except Exception as er:
@@ -51,7 +50,7 @@ class manger:
                 except Exception as er:
                     print("Error updating product:", er)
             else:
-                print("Product ID not found!")
+                print("Product ID not found!")  
         except Exception as er:
             print(er)
 

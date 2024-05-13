@@ -10,9 +10,9 @@ except Exception as er:
     print(er)
 
 try:
-    table = 'create table item (name varchar(20) primary key, qut integer(11), price integer(11))'
+    table='CREATE table item(id integer PRIMARY KEY AUTO_INCREMENT,sname varchar(20),name varchar(20),price integer,qui integer)'
     cr.execute(table)
-    print('table created')
+    print("table created")
 except Exception as er:
     print(er)
 
@@ -22,29 +22,35 @@ class Manage:
         self.fm.geometry('300x400')
         
     def insert(self):
-        self.fm.title("Insert prodect")
-        tkinter.Label(self.fm, text='name').place(x=30, y=50)
+        self.fm.title("Insert product")
+        tkinter.Label(self.fm, text='seller name').place(x=20, y=50)
+        self.sname = tkinter.Entry(self.fm)
+        self.sname.place(x=100,y=53)
+        tkinter.Label(self.fm, text='product name').place(x=20, y=80)
         self.name = tkinter.Entry(self.fm)
-        self.name.place(x=70, y=53)
-        tkinter.Label(self.fm, text='quit').place(x=30, y=80)
-        self.quit = tkinter.Entry(self.fm)
-        self.quit.place(x=70, y=83)
-        tkinter.Label(self.fm, text='price').place(x=30, y=110)
+        self.name.place(x=100, y=83)
+        tkinter.Label(self.fm, text='quantity').place(x=20, y=110)
+        self.quantity = tkinter.Entry(self.fm)
+        self.quantity.place(x=100, y=113)
+        tkinter.Label(self.fm, text='price').place(x=20, y=140)
         self.price = tkinter.Entry(self.fm)
-        self.price.place(x=70, y=113)
-        ttk.Button(self.fm, text='insert', command=self.ins).place(x=70, y=140)
+        self.price.place(x=100, y=143)
+        ttk.Button(self.fm, text='insert', command=self.ins).place(x=90, y=170)
         self.fm.mainloop()
+
     def ins(self):
+        s_name = self.sname.get()
         name = self.name.get()
-        quit_ = self.quit.get()
+        quantity = self.quantity.get()
         price = self.price.get()
-        try:
-            cr.execute('insert into item values(%s,%s,%s)', (name, quit_, price)) 
-            db.commit()
-            messagebox.showinfo("Success", "Data inserted successfully")
-        except Exception as er:
-            print(er)
-            messagebox.showerror("Error", "Failed to insert data")
+        if s_name and name and quantity and price:
+            try:
+                cr.execute('INSERT INTO item(sname,name,price,qui) VALUES (%s, %s, %s, %s)', (s_name, name, price, quantity))
+                db.commit()
+            except Exception as er:
+                print("Error inserting product:", er)
+                messagebox.showerror("Error", "Failed to insert data")
+
 
     def update(self):
         self.fm.title("Update product dityle")
@@ -67,21 +73,26 @@ class Manage:
         ttk.Button(self.fm,text='UPDATE',command=self.upd).place(x=80,y=200)
         self.fm.mainloop()
     def upd(self):
-        pr=self.product.get()
-        q=self.qut.get()
-        p=self.pric.get()
+        product=self.product.get()
+        quit=self.qut.get()
+        price=self.pric.get()
         try:
-            cr.execute('update item set qut=%s,price=%s where name=%s',(q,p,pr))
+            cr.execute('update item set qut=%s,price=%s where name=%s',(quit,price,product))
             db.commit()
         except Exception as er:
             print(er)
             messagebox.showerror("Error", "Failed to insert data")
-    def view():
-        cr.close()
+    def view(self):
         try:
-            select='selcet * from item'
+            select='SELECT * from item'
+            id='SELECT id from item'
             cr.execute(select)
             data=cr.fetchall()
+            cr.execute(id)
+            id=cr.fetchall()
             print(data)
         except Exception as er:
             print(er)
+        self.fm.geometry('400x500') 
+        self.fm.title('VIEW')      
+        self.fm.mainloop()  
