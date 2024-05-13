@@ -1,12 +1,12 @@
 import tkinter
 from tkinter import ttk
-import logi
+import re_login
 
 def login_action():
-    a=logi.log()
+    a=re_login.log()
     a.login()
 def re(): 
-    a=logi.res()
+    a=re_login.res()
     a.Re()
 tk = tkinter.Tk()
 tk.geometry('300x400')

@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import ttk, messagebox
 import pymysql
-import buttone
+import select
 import customer
 
 try:
@@ -54,7 +54,7 @@ class log:
                 role = cr.fetchone()
                 print(role)
                 if role[0] == 'Product Manager':
-                    a = buttone.But()
+                    a = select.But()
                     a.buttn()
                 elif role[0] == 'Customer':
                     c = customer.customer()

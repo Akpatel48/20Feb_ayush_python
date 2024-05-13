@@ -1,15 +1,15 @@
 import tkinter
 from tkinter import ttk
-import mange
+import in_up_vie
 
 def impor():
-    ma = mange.Manage()
+    ma = in_up_vie.Manage()
     ma.insert()
 def updat():
-    ma=mange.Manage()
+    ma=in_up_vie.Manage()
     ma.update()
 def vie():
-    ma=mange.Manage()
+    ma=in_up_vie.Manage()
     ma.view()
 
 class But:
