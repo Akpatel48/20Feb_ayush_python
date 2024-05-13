@@ -94,5 +94,8 @@ class Manage:
         except Exception as er:
             print(er)
         self.fm.geometry('400x500') 
-        self.fm.title('VIEW')      
+        self.fm.title('VIEW') 
+        tkinter.Label(text=data).place(x=10,y=30) 
         self.fm.mainloop()  
+m=Manage()
+m.view()
