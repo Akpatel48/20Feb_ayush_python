@@ -1,16 +1,16 @@
 import tkinter
 from tkinter import ttk, messagebox
 import pymysql
-import select
+import buttone
 import customer
-
+    #connect database
 try:
     db = pymysql.connect(host='localhost', user='root', password='', database='market')
     print('Database connected')
     cr = db.cursor()
 except Exception as er:
     print(er)
-
+    #create table
 try:
     table = 'CREATE TABLE register (id VARCHAR(20) PRIMARY KEY, name VARCHAR(20), contact INTEGER(11), email VARCHAR(20), gender VARCHAR(5), city VARCHAR(20), state VARCHAR(20), password VARCHAR(16), role VARCHAR(20))'
     cr.execute(table)
@@ -18,23 +18,24 @@ try:
 except Exception as er:
     print(er)
 
-
+#login function
 class log:
     def login(self):
         tk = tkinter.Tk()
         tk.geometry('300x400')
         tk.title("login")
+
         tkinter.Label(tk, text='id').place(x=1, y=150)
         self.lid = tkinter.Entry(tk)
         self.lid.place(x=120, y=153)
 
         tkinter.Label(tk, text='password').place(x=1, y=180)
-        self.pas = tkinter.Entry(tk)
+        self.pas = tkinter.Entry(tk,show='*')
         self.pas.place(x=120, y=183)
 
         ttk.Button(tk, text='Login', command=self.check).place(x=125, y=230)
         tk.mainloop()
-
+    #chect id or passwor same or not
     def check(self):
         entered_id = self.lid.get()
         entered_password = self.pas.get()
@@ -50,25 +51,24 @@ class log:
             if row:
                 print("Login successful")
                 select = "SELECT role FROM register WHERE id=%s"
-                cr.execute(select, (entered_id,))
+                cr.execute(select, (entered_id))
                 role = cr.fetchone()
                 print(role)
-                if role[0] == 'Product Manager':
-                    a = select.But()
-                    a.buttn()
+                if role[0] == 'Product Manager':    #check product manager or customer
+                    buttone.ManageButtons()
                 elif role[0] == 'Customer':
-                    c = customer.customer()
+                    c=customer.customer()
                     c.buy()
         else:
             messagebox.showwarning('', 'Please enter id & password')
 
-
+#register function
 class res:
     def Re(self):
         tk = tkinter.Tk()
-        tk.geometry('300x400')
+        tk.geometry('300x400')  
         tk.title('Register Forme')
-        tkinter.Label(tk, text='Please enter details below', background='yellow', width='100').pack()
+        tkinter.Label(tk, text='Please enter details below', background='yellow', width='100').pack()   #lable
 
         tkinter.Label(tk, text='id').place(x=10, y=50)
         self.id = tkinter.Entry(tk)
@@ -110,9 +110,11 @@ class res:
         tkinter.Radiobutton(tk, text='Product Manager', value=0, variable=self.role).place(x=80, y=280)
         tkinter.Radiobutton(tk, text='Customer', value=1, variable=self.role).place(x=150, y=280)
         ttk.Button(tk, text='Register', command=self.register).place(x=120, y=330)
+        self.temp=tk
         tk.mainloop()
-
+    #store data in database
     def register(self):
+
         id_ = self.id.get()
         name = self.name.get()
         contact = self.con.get()
@@ -130,4 +132,4 @@ class res:
             except Exception as er:
                     print(er)
         else:
-            tkinter.Label(text='fill the empty filed!!!').place(x=85, y=300)
+            tkinter.Label(self.temp,text='fill the empty filed!!!').place(x=85, y=300)
