@@ -4,5 +4,5 @@ try:
     a=int(input("enter number:"))
 except Exception as b:
     print(b)
-else:
+else:       #else part is anyway show
     print(a)
