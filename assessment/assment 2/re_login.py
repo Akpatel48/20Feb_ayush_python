@@ -88,8 +88,8 @@ class res:
 
         tkinter.Label(tk, text='Gender').place(x=10, y=175)
         self.gender = tkinter.IntVar()
-        tkinter.Radiobutton(tk, text='Male', value=0, variable=self.gender).place(x=80, y=175)
-        tkinter.Radiobutton(tk, text='Female', value=1, variable=self.gender).place(x=150, y=175)
+        tkinter.Radiobutton(tk, text='Male',value=0, variable=self.gender).place(x=80, y=175)
+        tkinter.Radiobutton(tk, text='Female',value=1, variable=self.gender).place(x=150, y=175)
 
         tkinter.Label(tk, text="City*").place(x=10, y=200)
         city = ['Rajkot', 'Ahmedabad', 'Baroda', 'Surat', 'Jamnagar']
@@ -106,9 +106,9 @@ class res:
         self.password.place(x=80, y=263)
 
         tkinter.Label(tk, text='Role').place(x=10, y=280)
-        self.role = tkinter.IntVar()
-        tkinter.Radiobutton(tk, text='Product Manager', value=0, variable=self.role).place(x=80, y=280)
-        tkinter.Radiobutton(tk, text='Customer', value=1, variable=self.role).place(x=150, y=280)
+        
+        self.role=tkinter.Radiobutton(tk, text='Product Manager',value=0).place(x=80, y=280)
+        self.role=tkinter.Radiobutton(tk, text='Customer',value=1).place(x=150, y=280)
         ttk.Button(tk, text='Register', command=self.register).place(x=120, y=330)
         self.temp=tk
         tk.mainloop()
@@ -119,7 +119,11 @@ class res:
         name = self.name.get()
         contact = self.con.get()
         email = self.email.get()
-        gender = "Male" if self.gender.get() == 0 else "Female"
+        print(self.role)
+        if self.gender.get() == 0:
+            gender = "Male"  
+        else: 
+            gender ="Female"
         city = self.city_combobox.get()
         state = self.state_combobox.get()
         password = self.password.get()
