@@ -40,12 +40,14 @@ class customer:
                 if quit[0]>int(gquit):
                     temp=quit[0]
                     gquit=temp-int(gquit)
-                else:
-                    messagebox.showwarning("show prodect quit",f"this product qite max available:{quit}")
                     try:
                         cr.execute('UPDATE item SET qui=%s WHERE name=%s',(gquit,nam))
                         db.commit()
+                        messagebox.showinfo('BUY','Product buy successfully')
                     except Exception as er:
                         print(er)
+                else:
+                    messagebox.showwarning("show prodect quit",f"this product qite max available:{quit}")
+                
             except Exception as er:
                 print(er)

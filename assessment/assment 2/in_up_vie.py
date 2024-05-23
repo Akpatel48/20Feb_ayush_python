@@ -48,6 +48,7 @@ class Manage:
             try:
                 cr.execute('INSERT INTO item(sname,name,price,qui) VALUES (%s, %s, %s, %s)', (s_name, name, price, quantity))
                 db.commit()
+                messagebox.showinfo('INSTER','Insert data  successfully')
             except Exception as er:
                 print("Error inserting product:", er)
                 messagebox.showerror("Error", "Failed to insert data")
@@ -80,6 +81,7 @@ class Manage:
         try:
             cr.execute('update item set qui=%s,price=%s where name=%s', (quit, price, product))
             db.commit()
+            messagebox.showinfo('UPDATE','Update data  successfully')
         except Exception as er:
             print(er)
             messagebox.showerror("Error", "Failed to update data")

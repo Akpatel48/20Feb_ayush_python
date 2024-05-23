@@ -107,8 +107,9 @@ class res:
 
         tkinter.Label(tk, text='Role').place(x=10, y=280)
         
-        self.role=tkinter.Radiobutton(tk, text='Product Manager',value=0).place(x=80, y=280)
-        self.role=tkinter.Radiobutton(tk, text='Customer',value=1).place(x=150, y=280)
+        self.role=tkinter.IntVar()
+        tkinter.Radiobutton(tk, text='Product Manager',value=0,variable=self.role).place(x=80, y=280)
+        tkinter.Radiobutton(tk, text='Customer',value=1,variable=self.role).place(x=150, y=280)
         ttk.Button(tk, text='Register', command=self.register).place(x=120, y=330)
         self.temp=tk
         tk.mainloop()
