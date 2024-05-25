@@ -1,8 +1,8 @@
 import tkinter
 from tkinter import ttk, messagebox
-import pymysql
 import buttone
 import customer
+import pymysql
     #connect database
 try:
     db = pymysql.connect(host='localhost', user='root', password='', database='market')
