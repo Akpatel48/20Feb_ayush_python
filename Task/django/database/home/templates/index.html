@@ -1,11 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    welcome
+    
+   
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input class="text" type="name" name="name" placeholder="name"><br>
+            <input class="text" type="email" name="email" placeholder="emali"><br>
+            <input class="text" type="tel" name="phone" placeholder="phone number"><br>
+            <input class="text" type="date" name="dab" ><br>
+            <textarea class="text" name="address" placeholder="address"></textarea><br>
+            <input type="submit" value="save">
+        </form>
+    </div>
 </body>
 </html>

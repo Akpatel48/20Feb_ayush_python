@@ -1,0 +1,33 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    
+}
+div{
+    align-items: center;
+    width: 30%;
+    height: 30%;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: 150px;
+}
+.text{
+    margin-top: 10px;
+    padding: 5px;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+    box-shadow: 4px 6px 6px;
+}
+form{
+    justify-content: center;
+}

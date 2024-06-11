@@ -19,5 +19,7 @@ from django.urls import path
 from home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index)
+    path('',views.index),
+    path('showdata/',views.showdata, name='showdata'),
+   path('delete/<int:id>',views.delete),
 ]

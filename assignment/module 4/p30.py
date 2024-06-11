@@ -5,23 +5,18 @@
 
 class Person :
     
-    def person(self,pr_name):
-        
-        self.pr_name = pr_name
-
+    def person(self):
+        self.prname = input("Enter Reference Person Name : ")
+       
 class Student(Person):        
         
-    def Student(self,s_name,s_course):
-        
-        print(f"\nStudent Name is : {s_name}")
-        print(f"Student Course is : {s_course}")
-        print(f"{self.pr_name} is Reference of {s_name}\n")
+    def Student(self):
+        sname = input("Enter Student Name : ")  
+        scourse = input("Enter Student Course : ")
+        print(f"\nStudent Name is : {sname}")
+        print(f"Student Course is : {scourse}")
+        print(f"{self.prname} is Reference of {sname}\n")
         
 st = Student()
-
-stName = input("Enter Student Name : ")  
-stCourse = input("Enter Student Course : ")
-prName = input("Enter Reference Person Name : ")
-
-st.person(prName)
-st.Student(stName,stCourse)
+st.person()
+st.Student()
