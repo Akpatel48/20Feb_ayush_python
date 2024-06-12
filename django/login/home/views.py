@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import *
+from django.contrib.auth import logout
 # Create your views here.
 def index(request):
     if request.method=='POST':
@@ -7,6 +8,7 @@ def index(request):
         pas=request.POST['pas']
         user=re.objects.filter(username=unm,password=pas)
         if user:
+            request.session['user']=unm
             return redirect('home')
     return render(request,'index.html')
 
@@ -21,4 +23,6 @@ def reg(request):
 def home(request):
     return render(request,'home.html')
     
-    
+def logaut(request):
+    logout(request)
+    return redirect('/')
