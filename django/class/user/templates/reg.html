@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #D795D4, #6974D1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 60px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        .containe {
+            background: #fff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 50px;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .container button {
+            background-color: #333;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .container input[type="submit"] {
+            background-color: #000000;
+            text-align: center;
+            color: #fff;
+        }
+        
+
+        .container .forgot {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        .containe .forgot {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        .container .remember {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .container .remember input[type="checkbox"] {
+            accent-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h1>Login</h1>
+            <div class="user">
+                <i class="fa fa-user"></i>
+            </div>
+            <input type="text" name="name" placeholder="USERNAME">
+            <input type="Email" name="email" placeholder="Email">
+            <input type="number" name="phone" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Signup">
+                <div class="remember">   
+            </div>
+            
+        </div>
+        
+    <center>
+        <div class="containe">
+            <a href="/" class="forgot">Login</a>
+        </div>
+    </center>
+    </form>
+</body>
+</html>
