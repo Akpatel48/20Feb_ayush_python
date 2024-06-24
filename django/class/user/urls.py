@@ -10,6 +10,6 @@ urlpatterns = [
     path('services/',views.services),
     path('login/',views.login,name='login'),
     path('reg/',views.reg),
-    
-    
+    path('userlogout/',views.userlogout),
+    path('verify/',views.verifyotp,name='otp')
 ]

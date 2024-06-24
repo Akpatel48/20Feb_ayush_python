@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Login</title>
     <style>
         body {
             background: linear-gradient(to right, #D795D4, #6974D1);
@@ -103,8 +103,9 @@
                 <div class="user">
                     <i class="fa fa-user"></i>
                 </div>
-                <input type="text" name="unm" placeholder="Email ID">
+                <input type="emali" name="unm" placeholder="Email ID">
                 <input type="password" name="pas" placeholder="Password">
+                <p style="color: red;">{{ error }}</p>
                 <input type="submit" value="Login">
             
             </div>
