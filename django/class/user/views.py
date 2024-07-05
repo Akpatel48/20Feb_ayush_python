@@ -30,9 +30,20 @@ def login(request):
         unm=request.POST['unm']
         pas=request.POST['pas']
         user=logi.objects.filter(email=unm,password=pas)
+        ''' id=logi.objects.filter(email=unm).values('id')
+        for i in id:
+            id=i
+        uid=otp.objects.filter(user_id=id.get('id'))
+        print(id.get('id'))
+        to_email=[unm]'''
         if user:
-            request.session['user']=unm
-            return redirect('/')
+            #if uid:
+                request.session['user']=unm
+                return redirect('/')
+                '''else:
+                print(to_email)
+                getotp(to_email)
+                return redirect('otp')'''
         else:
             error='username or password invalid'
             return render(request,'login.html',{'error':error})
@@ -40,24 +51,31 @@ def login(request):
     return render(request,'login.html')
 
 def reg(request):
-    global otp
-    global user
+    global otp,to_email
     if request.method=='POST':
         user=re(request.POST)
         if user.is_valid():
-            otp=random.randint(111111,999999)
-            sub='otp'
-            mas=f'your otp is:{otp}'
-            from_email='ayushpatel5440@gmail.com'
             to_email=[request.POST['email']]
+            email=logi.objects.filter(email=to_email)
             print(to_email)
-            send_mail(subject=sub,message=mas,from_email=from_email,recipient_list=to_email)
-            return redirect('otp')
+            if email:
+                mass='This email olredi reg goto login'
+                return render(request,'reg.html',{'mass':mass})
+            else:
+                user.save()
+                getotp(to_email)
+                return redirect('otp')
+            
         else:
             print(user.errors)
             
     return render(request,'reg.html')
-
+def getotp(to_email):
+    otp=random.randint(111111,999999)
+    sub='otp'
+    mas=f'your otp is:{otp}'
+    from_email='ayushpatel5440@gmail.com'
+    send_mail(subject=sub,message=mas,from_email=from_email,recipient_list=to_email)
 def userlogout(request):
     logout(request)
     return redirect('/')
@@ -67,7 +85,9 @@ def verifyotp(request):
     print(otp)
     if request.method=="POST":
         if request.POST['otp']==str(otp):
-            user.save()
             return redirect('login')
+    id=logi.objects.last()
+    #i=logi.objects.filter(id=id)
     
-    return render(request,'otp.html')
+    print(id)
+    return render(request,'otp.html',{'id':str(id)[13:-1]}) 

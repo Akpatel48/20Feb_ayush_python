@@ -6,12 +6,13 @@
     <title>Signup</title>
     <style>
         body {
-            background: linear-gradient(to right, #D795D4, #6974D1);
+            background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            align-items:center;
+            min-height: 110vh;
             margin: 0;
+            
             font-family: sans-serif;
         }
 
@@ -19,9 +20,10 @@
             background: #fff;
             padding: 30px;
             border-radius: 60px;
+            padding-top: 5px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 400px;
+            width: 600px;
         }
 
         .containe {
@@ -40,16 +42,17 @@
             margin-bottom: 20px;
             color: #333;
         }
-
-        .container input {
-            width: 100%;
+        
+        .container input,select {
+            width: 45%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
             box-sizing: border-box;
+            border-radius: 20px;
         }
-
+        
         .container button {
             background-color: #333;
             color: #fff;
@@ -96,29 +99,39 @@
     </style>
 </head>
 <body>
+    
     <form method="post">
         {% csrf_token %}
+        
         <div class="container">
-            <h1>Login</h1>
+            <h1>Signup</h1>
             <div class="user">
                 <i class="fa fa-user"></i>
             </div>
-            <input type="text" name="name" placeholder="USERNAME">
-            <input type="Email" name="email" placeholder="Email">
-            <input type="number" name="phone" placeholder="Phone">
-            <input type="password" name="password" placeholder="Password">
-            <a href="/login">{{mass}}</a>
-            <input type="submit" value="Signup">
+            <input type="text" class="inpu" name="name" placeholder="NAME">
+            <input type="text" class="inpu" name="specialities" placeholder="specialities">
+            <input type="text" class="inpu" name="degree" placeholder="degree">
+            <input type="text" class="inpu" name="experience" placeholder="experience">
+            <select name="gender" value="male" class="selec">
+                <option value="" >Select Gender:</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="">Othre</option>
+            </select>            
+            <input type="text" class="inpu" name="age" placeholder="AGE">
+            <input type="file" name="logo" required="1" accept="image/png,image/jpeg">
+            <input class="sel" type="submit" value="Signup">
                 <div class="remember">   
-            </div>
-            
+            </div> 
+            <label for=""></label>
         </div>
         
-    <center>
-        <div class="containe">
-            <a href="/login" class="forgot">Login</a>
-        </div>
-    </center>
-    </form>
+        
+        
+        
+        </form>
+        
+
 </body>
 </html>
+

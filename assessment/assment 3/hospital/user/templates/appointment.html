@@ -1,0 +1,100 @@
+<?php
+    require_once('inc/connection.php');
+    session_start();
+    if(isset($_SESSION['ulogged_in']) && $_SESSION['ulogged_in']==true){
+      $userId = $_SESSION['user_id'];
+  }else{
+      header("location:login.php");
+  }
+
+$userId = $_SESSION['user_id'];
+
+include 'inc/connection.php';
+
+$sqlUserName = "SELECT user_name FROM user WHERE user_id = $userId";
+$resultUserName = mysqli_query($conn, $sqlUserName);
+$rowUserName = mysqli_fetch_assoc($resultUserName);
+$userName = $rowUserName['user_name'];
+
+
+
+$sqlAppointments = "SELECT * FROM appointments WHERE user_id = $userId";
+$resultAppointments = mysqli_query($conn, $sqlAppointments);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Krishna Clinic</title>
+  <style>
+    table {
+			margin: 0 auto;
+			font-size: large;
+			border: 1px solid black;
+			width:95%;
+			border-collapse:collapse;
+            
+		}
+
+		h1 {
+            margin-left:35px;
+			color: #006600;
+            display:inline;
+		}
+
+		td {
+			background-color: #E4F5D4;
+			border: 1px solid black;
+		}
+
+		th,
+		td {
+			font-weight: bold;
+			border: 1px solid black;
+			text-align: center;
+		}
+
+		td {
+			font-weight: lighter;
+		}
+        .red{ background-color:red;
+            border-radius:4px;
+            padding:5px 15px;
+        }
+  </style>
+</head>
+<body>
+  {% include "inc/header.html" %}
+  <main>
+  
+  <h2>View Appointments</h2>
+  <p>Welcome, User ID: , Name:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>appointment id</th>
+        <th>doctor name</th>
+        <th>patient name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>patient number</th>
+        <th>Date of Birth</th>
+        <th>Patient Address
+        <th>Note</th>
+        
+        <th>Date</th>
+        <th>Time</th>
+        <th>token no.</th>
+        <th>weight</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+    </main>
+    {% include "inc/footer.html" %}
+  
+</body>
+</html>

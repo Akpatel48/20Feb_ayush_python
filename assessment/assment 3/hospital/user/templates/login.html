@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Login</title>
     <style>
         body {
             background: linear-gradient(to right, #D795D4, #6974D1);
@@ -96,29 +96,28 @@
     </style>
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        <div class="container">
-            <h1>Login</h1>
-            <div class="user">
-                <i class="fa fa-user"></i>
-            </div>
-            <input type="text" name="name" placeholder="USERNAME">
-            <input type="Email" name="email" placeholder="Email">
-            <input type="number" name="phone" placeholder="Phone">
-            <input type="password" name="password" placeholder="Password">
-            <a href="/login">{{mass}}</a>
-            <input type="submit" value="Signup">
-                <div class="remember">   
+   {% include "inc/header.html" %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="container">
+                <h1>Login</h1>
+                <div class="user">
+                    <i class="fa fa-user"></i>
+                </div>
+                <input type="emali" name="user_name" placeholder="Email ID">
+                <input type="password" name="password" placeholder="Password">
+                <p style="color: red;">{{ error }}</p>
+                <input type="submit" value="Login">
+            
             </div>
             
-        </div>
-        
-    <center>
-        <div class="containe">
-            <a href="/login" class="forgot">Login</a>
-        </div>
-    </center>
+        <center>
+            <div class="containe">
+                <a href="/sinup" class="forgot">Signup</a>
+            </div>
+        </center>
     </form>
+    
 </body>
 </html>

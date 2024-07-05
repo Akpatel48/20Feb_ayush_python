@@ -9,5 +9,6 @@ class logi(models.Model):
     email=models.EmailField()
     phone=models.BigIntegerField()
     password=models.CharField(max_length=50)
-
-    
+class otp(models.Model):
+    user_id=models.IntegerField()
+    otp=models.IntegerField()
