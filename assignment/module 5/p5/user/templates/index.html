@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Insert date</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        input{
+            font-size: large;
+            margin-left: 10px;
+        }
+        .submit ,p{
+            margin-left: 550px;
+        }
+        label{
+            font-size: large;
+            margin-left: 450px;
+        }
+        a{
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <p>Inser data</p>
+    <hr>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+        <label >Name</label>
+        <input type="text" name="name" placeholder="name"><br><br>
+        <label >Email</label>
+        <input type="email" name="email" placeholder="email"><br><br>
+        <label >Phone</label>
+        <input type="tel" name="phone" placeholder="phone number"><br><br>
+        <label >Date of birth</label>
+        <input type="date" name="date"><br><br>
+        <input type="submit" value="save" class="submit"><br>
+        <a href="/view">show data</a>
+    </form>
+</body>
+</html>
