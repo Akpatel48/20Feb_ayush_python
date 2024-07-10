@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: blanchedalmond;">
+    <form  method="post">
+        {% csrf_token %}
+        <center>
+            
+            <select name="p_name">
+                {% for i in prode %}
+                <option value="{{i.p_name}}">{{i.p_name}}</option>
+                {% endfor %}
+            </select><br><br>
+            <input type="number" name="p_price" placeholder="price"><br><br>
+            <input type="file" name="p_img" placeholder="img"><br><br>
+            <input type="text" name="p_model" placeholder="model"><br><br>
+            <input type="text" name="p_ram" placeholder="Ram"><br><br>
+            <input type="submit" value="save">
+        </center>
+    </form>
+</body>
+</html>
