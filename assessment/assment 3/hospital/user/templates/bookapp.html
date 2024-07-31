@@ -1,27 +1,3 @@
-<?php
-require_once('inc/connection.php');
-session_start();
-if(isset($_SESSION['ulogged_in']) && $_SESSION['ulogged_in'] == true){
-  echo "Welcome $_SESSION[user_id]";
-}else{
-  header("location:login.php");
-}
-date_default_timezone_set('Asia/Kolkata');
-
-function isTimeSlotPassed($date, $timeSlot) {
-  $currentTime = time();
-  $dateTimeSlot = strtotime("$date $timeSlot");
-  return $dateTimeSlot < $currentTime;
-}
-
-function convertToUserLocalTime($serverTimestamp, $userTimezoneOffset) {
-  $serverTime = strtotime($serverTimestamp);
-  $userTime = $serverTime + ($userTimezoneOffset * 60);
-  return date('h:i A', $userTime);
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,21 +95,20 @@ function convertToUserLocalTime($serverTimestamp, $userTimezoneOffset) {
   {% include "inc/header.html" %}
   <main>
     <form method="POST" action="">
-      <h2>Doctor Appointment Booking</h2>
-      <label for="doctor">Select Doctor:</label>
-      <select id="doctor" name="doctor" required>
+      <h2>Doctor Appointment Booking</h2>&nbsp;&nbsp;
+
+      <select id="docto" name="doctor" required>
         <option value="">Select a doctor</option>
-        
+        <option value="">{{Doctor.name}}</option>
       </select>
       <input type="submit" name="submit_doctor" value="Submit">
     </form>
-
         <div class="table-container">
             
                 <table class="appointment-table">
                     <thead>
                         <tr>
-                            <th colspan="2"><?php echo $date; ?></th>
+                            <th colspan="2"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -146,11 +121,16 @@ function convertToUserLocalTime($serverTimestamp, $userTimezoneOffset) {
             <td></td>
             <td>
                 
-                  <button class="book-button" onclick="">Book</button>
+                  <button class="book-button" onclick>book</button>
                
             </td>
         </tr>
-   
+    
+                    </tbody>
+                </table>
+            
+        </div>
+  
 
   </main>
   <script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            min-height: 110vh;
+            margin: 0;
+            
+            font-family: sans-serif;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 60px;
+            padding-top: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+        }
+
+        .containe {
+            background: #fff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 50px;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .container input,select {
+            width: 45%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+        
+        .container button {
+            background-color: #333;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .container input[type="submit"] {
+            background-color: #000000;
+            text-align: center;
+            color: #fff;
+        }
+        
+
+        .container .forgot {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        .containe .forgot {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        .container .remember {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .container .remember input[type="checkbox"] {
+            accent-color: #333;
+        }
+    </style>
+</head>
+<body>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="container">
+            <h1>Signup</h1>
+            <div class="user">
+                <i class="fa fa-user"></i>
+            </div> 
+            <select name="name" value="male" class="selec">
+                {% for i in doc_name %}
+                <option value="{{i.name}}" >{{i.name}}</option>
+                {% endfor %}
+                
+            </select>
+            <input type="text" class="inpu" name="specialities" placeholder="specialities">
+            <input type="text" class="inpu" name="degree" placeholder="degree">
+            <input type="text" class="inpu" name="experience" placeholder="experience">
+            <select name="gender" value="male" class="selec">
+                <option value="" >Select Gender:</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="">Othre</option>
+            </select>            
+            <input type="text" class="inpu" name="age" placeholder="AGE">
+            {% comment %} <input type="file" name="logo"> {% endcomment %}
+            <input class="sel" type="submit" value="Signup">
+                <div class="remember">   
+            </div> 
+            <label for=""></label>
+        </div>
+        
+        
+        
+        
+        </form>
+        
+
+</body>
+</html>
+

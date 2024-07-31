@@ -88,21 +88,27 @@ main{
 
   <header>
     <div class="left-side">
-      <img src="/static/images/logo.png" alt="Logo">
+      <a href="/"><img src="/static/images/logo.png" alt="Logo"></a>
       <div class="text-content">
-        <h1>Krishna</h1>
-        <p>diagnostic clinic</p>
+        <a href="/">
+          <h1>Krishna</h1>
+          <p>diagnostic clinic</p>
+        </a>
       </div>
     </div>
     <nav class="right-side">
         <ul>
         <li><a href='/'>Home</a></li>
-        <li><a href='/doctor'>Doctor</a></li>
-        <li><a href='/aboutus'>about us</a></li>
-          
-        <li><a href='/appointment'>My appointments</a></li>
         {% if sessio %}
-          <li><a href='/logou'>logoug</a></li>
+          {% if role.role == 'doctor' %}
+          <li><a href=''>Your profile</a></li>
+          {% else %}
+          <li><a href='/appointment'>My appointments</a></li>
+          {% endif %}
+        {% endif %}
+        <li><a href='/aboutus'>about us</a></li>  
+        {% if sessio %}
+          <li><a href='/logou'>logout</a></li>
         {% else %}
           <li><a href='/login'>login</a></li>
         {% endif %}

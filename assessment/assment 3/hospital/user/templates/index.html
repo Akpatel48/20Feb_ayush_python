@@ -1,21 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Clinic</title>
-    <link rel="shortcut icon" href="static/images/medicine.png" type="image/x-icon">
-</head>
-<body>
-   
-    {% include "inc/header.html" %}
+    <style>
+        main {
+            margin-top: 5%;
+        }
 
+        h1 {
+            margin-left: 30px;
+        }
+
+        .department-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            flex: 0 1 calc(25% - 20px);
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .img img {
+            border-radius: 10px;
+            max-height: 200px;
+            width: webkit-fill-available;
+            display: flex;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img{
+            color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-size-adjust: 10px;
+        }
+
+        .department-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+        .get {
+            text-decoration: none;
+            background-color: #2cbc63;
+            color:black;
+            border-radius: 6px;
+            display: inline-block !important;
+            padding: 9px 22px;
+            text-align: center;
+            transition: all 200ms;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "inc/header.html" %}
     <main>
-        <h1>Welcome to our hospital</h1>
-        
+        <h1>Doctor</h1>
+        <div class="department-container">
+            {% for i in detil %}
+            <div  class="box">
+                <div class="content">
+                    <div class="img">
+                        <img src="{{i.logo.url}}">
+                        <p>Docter name:{{i.name}}</p>
+                        <p>specialities:{{i.specialities}}
+                        <p>Degree:{{i.degree}}</p>
+                        <p>Experience:{{i.experience}}</p>
+                        <a href="/bookapp/{{i.id}}" class="get">Book appointment</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </main>
-   {% include "inc/footer.html" %}
+
+    {% comment %} {% include "inc/footer.html" %} {% endcomment %}
+
 
 </body>
+
 </html>

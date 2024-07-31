@@ -1,27 +1,3 @@
-<?php
-    require_once('inc/connection.php');
-    session_start();
-    if(isset($_SESSION['ulogged_in']) && $_SESSION['ulogged_in']==true){
-      $userId = $_SESSION['user_id'];
-  }else{
-      header("location:login.php");
-  }
-
-$userId = $_SESSION['user_id'];
-
-include 'inc/connection.php';
-
-$sqlUserName = "SELECT user_name FROM user WHERE user_id = $userId";
-$resultUserName = mysqli_query($conn, $sqlUserName);
-$rowUserName = mysqli_fetch_assoc($resultUserName);
-$userName = $rowUserName['user_name'];
-
-
-
-$sqlAppointments = "SELECT * FROM appointments WHERE user_id = $userId";
-$resultAppointments = mysqli_query($conn, $sqlAppointments);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,14 +55,15 @@ $resultAppointments = mysqli_query($conn, $sqlAppointments);
         <th>Gender</th>
         <th>patient number</th>
         <th>Date of Birth</th>
-        <th>Patient Address
+        <th>Patient Address</th>
         <th>Note</th>
-        
         <th>Date</th>
         <th>Time</th>
-        <th>token no.</th>
         <th>weight</th>
         <th>status</th>
+      </tr>
+      <tr>
+        
       </tr>
     </thead>
     <tbody>
@@ -94,7 +71,5 @@ $resultAppointments = mysqli_query($conn, $sqlAppointments);
     </tbody>
   </table>
     </main>
-    {% include "inc/footer.html" %}
-  
 </body>
 </html>
