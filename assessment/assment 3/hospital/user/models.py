@@ -24,14 +24,14 @@ class doctors(models.Model):
         return self.name.name
 
 class appointments(models.Model):
-    pname=models.CharField(max_length=50)
+    name=models.CharField(max_length=50)
     age=models.IntegerField()
     gender=models.CharField(max_length=10)
     phone=models.BigIntegerField()
     dob=models.DateField()
     address=models.CharField(max_length=100)
     note=models.CharField(max_length=100)
-    name=models.ForeignKey(doctors,on_delete=models.CASCADE)
+    #dname=models.ForeignKey(doctors,on_delete=models.CASCADE)
     ''' date=models.DateField(auto_now=False, auto_now_add=False)
     time=models.TimeField(auto_now=False, auto_now_add=False)'''
     
@@ -41,6 +41,8 @@ class appointments(models.Model):
 
 class time(models.Model):
     dname=models.ForeignKey(doctors,on_delete=models.CASCADE)
-    '''#pname=models.ForeignKey(appointments,on_delete=models.CASCADE)
+    username=models.CharField(max_length=100)
     date=models.DateField(auto_now=False, auto_now_add=False)
-    time=models.TimeField(auto_now=False, auto_now_add=False)'''
+    time=models.TimeField(auto_now=False, auto_now_add=False)
+    def __str__(self):
+        return self.username.email

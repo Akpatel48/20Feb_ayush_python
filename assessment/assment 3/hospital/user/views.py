@@ -44,10 +44,7 @@ def sinup(request):
         if pa==cpa:
             if req.is_valid():
                 req.save()
-                if role=='doctor':
-                    return redirect('rgistesen')
-                else:
-                    return redirect('login')
+                return redirect('login')
             else:
                 print(req.errors)
         else:
@@ -55,20 +52,30 @@ def sinup(request):
             return render(request,'sinup.html',{'error':error})
     return render(request,'sinup.html')
 def log(request):
+    global unm
     if request.method=='POST':
         unm=request.POST['user_name']
         pas=request.POST['password']
         use=login.objects.filter(email=unm,password=pas)
+        print(unm)
+        role=login.objects.get(email=unm)
+        print(role.role)
         if use:
             request.session['use']=unm
-            return redirect('/')
+            if role.role=='doctor':
+                return redirect('rgistesen')
+            else:
+                return redirect('/')
+        
         else:
             error='username or password invalid'
             return render(request,'login.html',{'error':error})
             
     return render(request,'login.html')
 def doctor_r(request):
-    doc_name=login.objects.all()
+    print(unm)
+    doc_name=login.objects.get(email=unm)
+    print(doc_name)
     if request.method=='POST':
         req=doctor(request.POST)
         if req.is_valid():

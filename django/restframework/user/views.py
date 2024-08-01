@@ -1,17 +1,14 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from .models import *
-from .serializer import *
 from rest_framework.response import Response
 from rest_framework import status
-
-
-# Create your views here.
+from .serializer import *
+from .models import *
 
 @api_view(['GET'])
 def getall(request):
     stdata=stude_info.objects.all()
-    serial=stude_info(stdata,many=True)
+    serial=stude(stdata,many=True)
     return Response(data=serial.data,status=status.HTTP_200_OK)
 
 
