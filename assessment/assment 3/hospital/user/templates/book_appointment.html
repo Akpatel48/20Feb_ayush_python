@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>book Appointment</title>
     <style>
         body {
             background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
@@ -17,7 +17,6 @@
         }
 
         .container {
-            background: #fff;
             padding: 30px;
             border-radius: 60px;
             padding-top: 5px;
@@ -96,6 +95,12 @@
         .container .remember input[type="checkbox"] {
             accent-color: #333;
         }
+        .inpu{
+            border:0cap;
+            background-color: #ffffff;
+            justify-i
+
+        }
     </style>
 </head>
 <body>
@@ -104,11 +109,9 @@
         {% csrf_token %}
         
         <div class="container">
-            <h1>Signup</h1>
-            <div class="user">
-                <i class="fa fa-user"></i>
-            </div> 
-            <input type="text" class="inpu" name="name" placeholder="name">
+            <h1>book Appointment</h1>
+            <input class="inpu" type="text" value="{{sessio}}" name="user" readonly><br>
+            <input type="text" class="inpu"name="name" placeholder="name">
             <input type="number" class="inpu" name="age" placeholder="age">
             <select name="gender" value="male" class="selec">
                 <option value="" >Select Gender:</option>

@@ -12,18 +12,21 @@ class login(models.Model):
         return self.name
  
 class doctors(models.Model):
-    name=models.ForeignKey(login,on_delete=models.CASCADE)
+    logo=models.ImageField(upload_to='static/images/doctor')
+    name=models.CharField(max_length=100)
+    email=models.EmailField( max_length=254)
     specialities=models.CharField(max_length=50)
     degree=models.CharField(max_length=30)
     experience=models.CharField(max_length=20)
     gender=models.CharField(max_length=10)
     age=models.IntegerField()
-    logo=models.FileField(upload_to='static/images/doctor')
     
     def __str__(self):
         return self.name.name
 
 class appointments(models.Model):
+    #userid=models.EmailField()
+    user=models.CharField(max_length=100)
     name=models.CharField(max_length=50)
     age=models.IntegerField()
     gender=models.CharField(max_length=10)
@@ -31,18 +34,9 @@ class appointments(models.Model):
     dob=models.DateField()
     address=models.CharField(max_length=100)
     note=models.CharField(max_length=100)
-    #dname=models.ForeignKey(doctors,on_delete=models.CASCADE)
-    ''' date=models.DateField(auto_now=False, auto_now_add=False)
-    time=models.TimeField(auto_now=False, auto_now_add=False)'''
-    
-    
-    def __str__(self):
-        return self.name    
 
 class time(models.Model):
-    dname=models.ForeignKey(doctors,on_delete=models.CASCADE)
-    username=models.CharField(max_length=100)
+    dname=models.CharField(max_length=100)
+    user=models.CharField(max_length=100)
     date=models.DateField(auto_now=False, auto_now_add=False)
     time=models.TimeField(auto_now=False, auto_now_add=False)
-    def __str__(self):
-        return self.username.email

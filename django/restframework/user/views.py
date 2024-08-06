@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializer import *
+'''from .serializer import *
 from .models import *
 
 @api_view(['GET'])
@@ -19,4 +19,4 @@ def getstid(request,id):
     except stude_info.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     serial=stude_info(stid)
-    return Response(data=serial.data,status=status.HTTP_200_OK)
+    return Response(data=serial.data,status=status.HTTP_200_OK)'''

@@ -9,13 +9,13 @@ urlpatterns = [
     path('header/',views.header),
     #path('doctor/',views.Doctor,name='d'),
     path('aboutus/',views.aboutus),
-    path('appointment/',views.appointment),
+    path('appointment/',views.appointment,name='appointment'),
     path('sinup/',views.sinup),
     path('login/',views.log,name='login'),
     path('logou/',views.logou),
     path('doctor_r/',views.doctor_r, name='rgistesen'),
     path('bookapp/<int:id>',views.bookapp),
-    path('book_app/',views.book_app),
+    path('book_app/',views.book_app,name='book_app'),
     
 ]
 

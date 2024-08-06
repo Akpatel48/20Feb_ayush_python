@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +10,13 @@
     h2 {
       font-size: 24px;
       margin-bottom: 20px;
-      display:block;
+      display: block;
     }
 
-    form {
+    table {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
-      max-width: 800px;
+      max-width: 1000px;
       margin: 20px auto;
       padding: 20px;
       border: 1px solid #ddd;
@@ -29,7 +29,8 @@
       margin-right: 10px;
     }
 
-    select, input[type="submit"] {
+    select,
+    input[type="submit"] {
       padding: 8px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -39,20 +40,20 @@
     .appointment-table {
       display: inline-block;
       vertical-align: top;
-      margin-right: 20px; 
+      margin-right: 20px;
     }
 
     .appointment-table {
-      width: 300px;
-      max-width: 100%; 
+      max-width: 100%;
     }
 
     .table-container {
-      overflow: auto; 
-      white-space: nowrap; 
+      overflow: auto;
+      white-space: nowrap;
     }
 
-    .appointment-table th, .appointment-table td {
+    .appointment-table th,
+    .appointment-table td {
       padding: 10px;
       text-align: center;
       border: 1px solid #ddd;
@@ -89,59 +90,59 @@
     .book-button:hover {
       background-color: #1565C0;
     }
+    .user{
+      background: #f2f2f2;
+      border: 0ch;
+      width: 80%;
+    }
   </style>
 </head>
+
 <body>
   {% include "inc/header.html" %}
   <main>
     <form method="POST" action="">
-      <h2>Doctor Appointment Booking</h2>&nbsp;&nbsp;
-
-      <select id="docto" name="doctor" required>
-        <option value="">Select a doctor</option>
-        <option value="">{{Doctor.name}}</option>
-      </select>
-      <input type="submit" name="submit_doctor" value="Submit">
-    </form>
-        <div class="table-container">
-            
-                <table class="appointment-table">
-                    <thead>
-                        <tr>
-                            <th colspan="2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="time-label">Time Slot</td>
-                            <td class="time-slot">Available Slots</td>
-                        </tr>
-                        
-                          <tr>
-            <td></td>
-            <td>
-                
+      {% csrf_token %}
+      <div class="table-container">
+        <center>
+          <table class="appointment-table">
+            <tr>
+              <th style="text-align: left;" colspan="2">userid: <input type="text" class="user" name="user" value="{{sessio}}" readonly  ></th>
+            </tr>
+            <tr>
+              <th>Doctor Appointment Booking&nbsp;&nbsp;
+                <select id="docto" name="dname" required>
+                  <option value="">Select a doctor</option>
+                  <option value="{{Doctor.name}}">{{Doctor.name}}</option>
+                </select>&nbsp;&nbsp;
+              </th>
+              <th colspan="2"><input type="date" name="date"></th>
+            </tr>
+            <tbody>
+              <tr>
+                <td class="time-label">Time Slot</td>
+                <td class="time-slot">Available Slots</td>
+              </tr>
+              {% for i in time %}
+              <tr>
+                <td>
+                  <input type="time" name="time" value="{{i}}">
+                </td>
+                <td>
                   <button class="book-button" onclick>book</button>
-               
-            </td>
-        </tr>
-    
-                    </tbody>
-                </table>
-            
-        </div>
-  
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </center>
+      </div>
+      
+    </form>
+
 
   </main>
-  <script>
-  function confirmBooking(doctorId, doctorName, date, timeSlot) {
-      const confirmationMessage = `Are you sure you want to book an appointment with ${doctorName} on ${date} at ${timeSlot}?`;
-      const confirmation = confirm(confirmationMessage);
-      
-      if (confirmation) {
-          window.location.href = `book_appointment.php?doctor_id=${doctorId}&date=${date}&time_slot=${timeSlot}`;
-      }
-  }
-  </script>
+
 </body>
+
 </html>

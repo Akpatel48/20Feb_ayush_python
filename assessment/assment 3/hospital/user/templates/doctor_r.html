@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Docter Rejestesen</title>
     <style>
         body {
             background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
@@ -99,8 +99,8 @@
     </style>
 </head>
 <body>
-    
-    <form method="post">
+    {{log}}
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
         <div class="container">
@@ -108,7 +108,7 @@
             <div class="user">
                 <i class="fa fa-user"></i>
             </div> 
-            <input type="text" class="inpu" name="email" value={{doc_name.name}} placeholder={{doc_name.name}} readonly>
+            <input type="text" class="inpu" name="name" value={{doc_name.name}} >
             <input type="text" class="inpu" name="email" value={{doc_name.email}} placeholder={{doc_name.email}} readonly>
             <input type="text" class="inpu" name="specialities" placeholder="specialities">
             <input type="text" class="inpu" name="degree" placeholder="degree">
@@ -120,7 +120,7 @@
                 <option value="">Othre</option>
             </select>            
             <input type="text" class="inpu" name="age" placeholder="AGE">
-            {% comment %} <input type="file" name="logo"> {% endcomment %}
+            {{log}}
             <input class="sel" type="submit" value="Signup">
                 <div class="remember">   
             </div> 
