@@ -9,7 +9,7 @@ class login(models.Model):
     phone=models.BigIntegerField()
     password=models.CharField(max_length=16)
     def __str__(self):
-        return self.name
+        return self.email
  
 class doctors(models.Model):
     logo=models.ImageField(upload_to='static/images/doctor')
@@ -22,10 +22,10 @@ class doctors(models.Model):
     age=models.IntegerField()
     
     def __str__(self):
-        return self.name.name
+        return self.name
+
 
 class appointments(models.Model):
-    #userid=models.EmailField()
     user=models.CharField(max_length=100)
     name=models.CharField(max_length=50)
     age=models.IntegerField()
@@ -34,6 +34,9 @@ class appointments(models.Model):
     dob=models.DateField()
     address=models.CharField(max_length=100)
     note=models.CharField(max_length=100)
+    dname=models.CharField(max_length=100)
+    date=models.DateField(auto_now=False, auto_now_add=False)
+    time=models.TimeField(auto_now=False, auto_now_add=False)
 
 class time(models.Model):
     dname=models.CharField(max_length=100)

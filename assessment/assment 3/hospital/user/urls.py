@@ -6,17 +6,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
-    path('header/',views.header),
-    #path('doctor/',views.Doctor,name='d'),
+    path('doctor/',views.doctor,name='doctor'),
     path('aboutus/',views.aboutus),
     path('appointment/',views.appointment,name='appointment'),
     path('sinup/',views.sinup),
-    path('login/',views.log,name='login'),
+    path('login/',views.loginview,name='login'),
     path('logou/',views.logou),
     path('doctor_r/',views.doctor_r, name='rgistesen'),
-    path('bookapp/<int:id>',views.bookapp),
     path('book_app/',views.book_app,name='book_app'),
-    
+    path('deletedata/<int:id>',views.deletedata),
 ]
 
 '''if settings.DEBUG:

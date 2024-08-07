@@ -42,7 +42,7 @@
             color: #333;
         }
         
-        .container input,select {
+        .container input,select,textarea {
             width: 45%;
             padding: 10px;
             margin: 10px 0;
@@ -110,7 +110,13 @@
         
         <div class="container">
             <h1>book Appointment</h1>
-            <input class="inpu" type="text" value="{{sessio}}" name="user" readonly><br>
+            <input class="inpu" type="text" value="{{sessio}}" name="user" readonly>
+            <select id="docto" name="dname" required>
+                  <option value="">Select a doctor</option>
+                  {% for i in Doctor %}
+                  <option value="{{i.name}}">{{i.name}}</option>
+                  {% endfor %}
+            </select>&nbsp;&nbsp;
             <input type="text" class="inpu"name="name" placeholder="name">
             <input type="number" class="inpu" name="age" placeholder="age">
             <select name="gender" value="male" class="selec">
@@ -121,15 +127,20 @@
             </select>            
             <input type="tel" class="inpu" name="phone" placeholder="phone number"><br>
             <label for="dob">Date of birth:</label>
-            <input type="date" name="dob" id=""><br>
-            <label for="address:">Address</label>
-            <textarea name="address" placeholder="Address" style="width: 50%;"></textarea><br>
-            <label for="note:">Note</label>
-            <textarea name="note" placeholder="Note" style="width: 46%;"></textarea><br>
+            <input type="date" name="dob" style="width: 25%;">
+            <label for="time">Appointment time:</label>
+            <th colspan="2"><input type="date" name="date" style="width: 25%;"></th><br>
+            <select  name="time" style="width: 90%;" required>
+                <option value="">Select time</option>
+                {% for i in time %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+          </select>
+            <textarea name="address" placeholder="Address"></textarea>
+            <textarea name="note" placeholder="Note"></textarea>
             <input class="sel" type="submit" value="Signup">
                 <div class="remember">   
             </div> 
-            <label for=""></label>
         </div>
         
         

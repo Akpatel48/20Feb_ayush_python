@@ -1,82 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna Clinic</title>
-    <style>
-        main {
-            margin-top: 5%;
-        }
+  <title>Krishna Clinic</title>
+  <style>
+    table {
+			margin: 0 auto;
+			font-size: large;
+			border: 1px solid black;
+			width:95%;
+			border-collapse:collapse;
+            
+		}
 
-        h1 {
-            margin-left: 30px;
-        }
+		h1 {
+            margin-left:35px;
+			color: #006600;
+            display:inline;
+		}
 
-        .department-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 20px;
-        }
+		td {
+			background-color: #E4F5D4;
+			border: 1px solid black;
+		}
 
-        .box {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            flex: 0 1 calc(25% - 20px);
-            overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
+		th,
+		td {
+			font-weight: bold;
+			border: 1px solid black;
+			text-align: center;
+		}
 
-        .box:hover {
-            transform: scale(1.05);
+		td {
+			font-weight: lighter;
+		}
+        .red{ background-color:red;
+            border-radius:4px;
+            padding:5px 15px;
         }
-
-        .content {
-            padding: 20px;
-        }
-
-        .img img {
-            max-width: 100px;
-            max-height: 100px;
-            display: flex;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .department-name {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            color: #333;
-        }
-        
-    </style>
+  </style>
 </head>
 <body>
-    {% include "inc/header.html" %}
-    <main>
-        <h1>Doctor</h1>
-        <div class="department-container">
-        {% for i in detil %}                  
-            <a href="" class="box">
-                <div class="content">
-                    <div class="img">
-                        <img src="{{i.logo.url}}">
-                        <p>{{i.name}}</p>
-                    </div>
-                </div>
-            </a> 
-            {% endfor %}
-            </div>  
+  {% include "inc/header.html" %}
+  <main>
+  
+  <h2>View Appointments</h2>
+  <p>Welcome, User ID:{{sessio}}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Doctor id</th>
+        <th>Doctor name</th>
+        <th>Email</th>
+        <th>Specialities</th>
+        <th>Degree</th>
+        <th>Experience</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Delete</th>
+        
+      </tr>
+      
+      {% for i in  docto%}
+      <tr>
+        <td>
+          {{i.id}}
+        </td>
+        <td>
+          {{i.name}}
+        </td>
+        <td>
+          {{i.email}}
+        </td>
+        <td>
+          {{i.specialities}}
+        </td>
+        <td>
+          {{i.degree}}
+        </td>
+        <td>
+          {{i.experience}}
+        </td>
+        <td>
+          {{i.gender}}
+        </td>
+        <td>
+          {{i.age}}
+        </td>
+        <td>
+          <a href="/deletedata/{{i.id}}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
     </main>
-
-    {% comment %} {% include "inc/footer.html" %} {% endcomment %}
-              
-            
 </body>
 </html>

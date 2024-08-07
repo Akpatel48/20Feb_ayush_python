@@ -2,20 +2,46 @@ from django.shortcuts import render,redirect
 from .froms import *
 from django.contrib.auth import logout
 # Create your views here.
-'''def index(request):
-    global sessio
-    sessio=request.session.get('use')
-    role=login.objects.values_list('role')
-    print(role)
-    #role=request.login.get()
-    return render(request,'index.html',{'sessio':sessio,'role':role})'''
 
+#index 
 def index(request):
-    global sessio
-    sessio=request.session.get('use')
+    session=request.session.get('use')
     detil=doctors.objects.all()
-    return render(request,'index.html',{'detil':detil,'sessio':sessio})
-def log(request):
+    try:
+        role=login.objects.get(email=session)
+    except:
+        return render(request,'index.html',{'detil':detil})
+    try:
+        return render(request,'index.html',{'detil':detil,'sessio':session,'role':role})
+    except:
+        return render(request,'index.html',{'detil':detil})
+        
+
+#sinup 
+def sinup(request):
+    if request.method=='POST':
+        req=loginform(request.POST)
+        pa=request.POST['password']
+        cpa=request.POST['cpassword']
+        email=request.POST['email']
+        emai=login.objects.filter(email=email)
+        if emai:
+            mass='your email olredi registerd'
+            return render(request,'sinup.html',{'mass':mass})     
+        else:
+            if pa==cpa:
+                if req.is_valid():
+                    req.save()
+                    return redirect('login')
+                else:
+                    print(req.errors)
+            else:
+                error='password invalid'
+                return render(request,'sinup.html',{'error':error})
+    return render(request,'sinup.html')
+
+#login 
+def loginview(request):
     global unm
     if request.method=='POST':
         unm=request.POST['user_name']
@@ -38,68 +64,70 @@ def log(request):
             return render(request,'login.html',{'error':error})
             
     return render(request,'login.html')
-def aboutus(request):
-    return render(request,'aboutus.html',{'sessio':sessio})
 
+#check appointment view
 def appointment(request):
-    sessio=request.session.get('use')
-    return render(request,'appointment.html',{'sessio':sessio})
+    session=request.session.get('use')
+    ditle=appointments.objects.filter(user=session)
+    try:
+        role=login.objects.get(email=session)
+    except:
+        return render(request,'appointment.html',{'sessio':session,'ditle':ditle})
+    return render(request,'appointment.html',{'sessio':session,'ditle':ditle,'role':role})
 
-def bookapp(request,id):
-    global unm
-    sessio=request.session.get('use')
-    doctor=doctors.objects.get(id=id)
+#appointment psante ditle get
+def book_app(request):
+    session=request.session.get('use')
+    doctor=doctors.objects.all()
     time=['10:00','10:30','11:00','11:00','11:30','12:00','04:00','04:30','05:00','05:30','06:00','06:30','07:00']
     if request.method=='POST':
-        req=tim(request.POST)
-        if req.is_valid:
-            req.save()
-            print(req.errors)
-            return redirect('book_app')
-    return render(request,'bookapp.html',{'Doctor':doctor,'sessio':sessio,'time':time}) 
-def book_app(request):
-    sessio=request.session.get('use')
-    if request.method=='POST':
-        req=appointen(request.POST)
+        req=appointenform(request.POST)
         if req.is_valid():
             req.save()
             return redirect('appointment')
         else:
             print(req.errors)
-    return render(request,'book_appointment.html',{'sessio':sessio})
+    try:
+        role=login.objects.get(email=session)
+    except:
+        return render(request,'book_appointment.html',{'Doctor':doctor,'sessio':session,'time':time})
+    return render(request,'book_appointment.html',{'Doctor':doctor,'sessio':session,'time':time,'role':role})
 
-def sinup(request):
-    if request.method=='POST':
-        req=logi(request.POST)
-        pa=request.POST['password']
-        cpa=request.POST['cpassword']
-        role=request.POST['role']
-        if pa==cpa:
-            if req.is_valid():
-                req.save()
-                return redirect('login')
-            else:
-                print(req.errors)
-        else:
-            error='password invalid'
-            return render(request,'sinup.html',{'error':error})
-    return render(request,'sinup.html')
-
+#doctor ditle get
 def doctor_r(request):
-    print(unm)
-    doc_name=login.objects.get(email=unm)
-    print(doc_name)
+    session=request.session.get('use')
+    doc_name=login.objects.get(email=session)
     if request.method=='POST':
-        req=doctor(request.POST)
+        req=doctorsform(request.POST,request.FILES)
         if req.is_valid():
             req.save()
             return redirect('/')
         else:
             print(req.errors)
-    log=doctor()
+    log=doctors()
     return render(request,'doctor_r.html',{'doc_name':doc_name,'logo':log})
-def header(request):
-    return render(request,'header.html')
+
+def doctor(request):
+    session=request.session.get('use')
+    docto=doctors.objects.all()
+    try:
+        role=login.objects.get(email=session)
+        
+    except: 
+        return render(request,'doctor.html',{'sessio':session})
+    return render(request,'doctor.html',{'sessio':session,'role':role,'docto':docto})
+
+def deletedata(request,id):
+    stid=doctors.objects.get(id=id)
+    #doctors.delete(stid)
+    return redirect('doctor')
+
+#logout
 def logou(request):
     logout(request)
     return redirect('/')
+
+#about 
+def aboutus(request):
+    session=request.session.get('use')
+    return render(request,'aboutus.html',{'sessio':session})

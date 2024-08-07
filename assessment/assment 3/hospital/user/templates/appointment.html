@@ -44,7 +44,7 @@
   <main>
   
   <h2>View Appointments</h2>
-  <p>Welcome, User ID: , Name:</p>
+  <p>Welcome, User ID:{{sessio}}</p>
   <table>
     <thead>
       <tr>
@@ -59,12 +59,46 @@
         <th>Note</th>
         <th>Date</th>
         <th>Time</th>
-        <th>weight</th>
-        <th>status</th>
-      </tr>
-      <tr>
         
       </tr>
+      
+      {% for i in  ditle%}
+      <tr>
+        <td>
+          {{i.id}}
+        </td>
+        <td>
+          {{i.dname}}
+        </td>
+        <td>
+          {{i.name}}
+        </td>
+        <td>
+          {{i.age}}
+        </td>
+        <td>
+          {{i.gender}}
+        </td>
+        <td>
+          {{i.phone}}
+        </td>
+        <td>
+          {{i.dob}}
+        </td>
+        <td>
+          {{i.address}}
+        </td>
+        <td>
+          {{i.note}}
+        </td>
+        <td>
+          {{i.date}}
+        </td>
+        <td>
+          {{i.time}}
+        </td>
+      </tr>
+      {% endfor %}
     </thead>
     <tbody>
       

@@ -12,9 +12,12 @@ class use(admin.ModelAdmin):
 class logi(admin.ModelAdmin):
     list_display=['id','role','name','email','phone','password']
 
+class tim(admin.ModelAdmin):
+    list_display=['user']
 '''class tim(admin.ModelAdmin):
     list_display=['dname','time','date']'''
-admin.site.register(time)
+
+admin.site.register(time,tim)
 admin.site.register(appointments)
 admin.site.register(doctors,doctor)
 admin.site.register(login,logi)
