@@ -20,6 +20,10 @@ from user import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.getall),
-    path('getstid/<int:id>',views.getstid)
+    path('getstid/<int:id>',views.getstid),
+    path('deleteid/<int:id>',views.deleteid),
+    path('insrtdata/',views.insertdata),
+    path('update/<int:id>',views.update),
+    
     
 ]
